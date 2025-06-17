@@ -1,0 +1,256 @@
+/* Reset and base font */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0fdfc;
+  color: #2c3e50;
+}
+
+/* Layout container */
+#main {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar (Table of Contents) */
+#TOC {
+  width: 25%;
+  background: linear-gradient(to bottom, #d7f9f3, #b2f0e8);
+  padding: 25px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  border-right: 3px solid #00bfa5;
+}
+
+/* Sidebar heading */
+#TOC h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #00695c;
+  font-size: 24px;
+}
+
+/* Sidebar list */
+#tocul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#tocul > li {
+  margin-bottom: 18px;
+}
+
+#tocul > li > a {
+  display: block;
+  background-color: #a5f2e0;
+  padding: 12px 18px;
+  border-radius: 18px;
+  text-decoration: none;
+  color: #004d40;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#tocul > li > a:hover,
+#tocul > li > a:focus {
+  background-color: #00ccb5;
+  color: white;
+  transform: translateX(5px);
+  outline: none;
+}
+
+/* Sub-list in sidebar */
+#tocul li ul {
+  margin-top: 10px;
+  padding-left: 20px;
+  list-style: none;
+}
+
+#tocul li ul li a {
+  display: block;
+  background-color: #d1faff;
+  padding: 8px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #006064;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+
+#tocul li ul li a:hover,
+#tocul li ul li a:focus {
+  background-color: #4dd0e1;
+  color: white;
+  transform: translateX(5px);
+  outline: none;
+}
+
+/* Content area */
+#details {
+  width: 75%;
+  padding: 40px;
+  background-color: #ffffff;
+  overflow-y: auto;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Headings */
+#details h1 {
+  font-size: 2rem;
+  color: #1e3d59;
+  margin-bottom: 20px;
+}
+
+#details h2 {
+  font-size: 1.6rem;
+  color: #157c74;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+#details h3 {
+  font-size: 1.3rem;
+  color: #288d8d;
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+
+/* Paragraphs */
+#details p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+/* Lists */
+#details ul,
+#details ol {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+#details ul li,
+#details ol li {
+  margin-bottom: 10px;
+}
+
+/* Tables */
+#details table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+#details th,
+#details td {
+  border: 1px solid #ccc;
+  padding: 12px 15px;
+  text-align: left;
+  color: #004d40;
+}
+
+#details th {
+  background-color: #a5f2e0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #main {
+    flex-direction: column;
+  }
+
+  #TOC,
+  #details {
+    width: 100%;
+    height: auto;
+  }
+
+  #TOC {
+    position: relative;
+    border-right: none;
+    box-shadow: none;
+  }
+
+  #details {
+    padding: 20px;
+  }
+
+  #details h1 {
+    font-size: 1.6rem;
+  }
+
+  #details h2 {
+    font-size: 1.3rem;
+  }
+
+  #details h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Optional: Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #ddd;
+}
+
+.sidebar ul li a:hover {
+    background-color: #bbb;
+}
+
+.content {
+    flex: 1;
+    padding: 30px;
+}
