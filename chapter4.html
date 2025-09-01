@@ -1,0 +1,284 @@
+<html >
+<head>
+    <title>Unit 4: C Programming</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="sidebar">
+        <ul id="tocul">
+            <li><a href="Syllabus.html">Home</a></li>
+            <li><a href="chapter1.html">Database management system</a></li>
+            <li><a href="chapter2.html">Data communication and networking</a></li>
+            <li><a href="chapter3.html">Web tech-II</a></li>
+            <li><a href="chapter4.html">C Programming II</a></li>
+            <li><a href="chapter5.html">Object oriented programming</a></li>
+            <li><a href="chapter6.html">Software development life cycle</a></li>
+            <li><a href="chapter7.html">Recent Trend in technology</a></li>
+            <li><a href="questions.html">Past Year Questions</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+<h1>Unit 4: C Programming</h1>
+<section>
+    <h2>Functions</h2>
+    
+    <h3>Introduction and Syntax</h3>
+    <p>A function is a self-contained block of code designed to perform a specific task. Functions improve modularity and code reuse.</p>
+    <p><strong>Syntax:</strong></p>
+    <pre><code>return_type function_name(parameter_list) {
+    // body of function
+}</code></pre>
+
+    <h3>Purpose and Advantages</h3>
+    <ul>
+        <li>Code Reusability</li>
+        <li>Improves readability and organization</li>
+        <li>Easier maintenance and debugging</li>
+        <li>Logical modularization of complex problems</li>
+    </ul>
+
+    <h3>Components of a Function</h3>
+    <ul>
+        <li><strong>Function Prototype:</strong> Declaration specifying the function signature</li>
+        <li><strong>Function Definition:</strong> Actual body with logic</li>
+        <li><strong>Function Call:</strong> Invoking the function</li>
+        <li><strong>Return Statement:</strong> Sends a result back to the caller</li>
+    </ul>
+
+    <h3>Types of Functions</h3>
+    <ul>
+        <li><strong>Library Functions:</strong> Predefined functions like <code>printf()</code>, <code>scanf()</code></li>
+        <li><strong>User Defined Functions:</strong> Functions written by the programmer</li>
+    </ul>
+
+    <h3>Passing Arguments</h3>
+    <ul>
+        <li><strong>Call by Value:</strong> Passes a copy of the argument; changes inside function do not affect original</li>
+        <li><strong>Call by Reference:</strong> Passes address of argument; changes affect original variable</li>
+    </ul>
+
+    <h3>Variable Scope</h3>
+    <ul>
+        <li><strong>Local Variables:</strong> Declared inside a function; accessible only there</li>
+        <li><strong>Global Variables:</strong> Declared outside all functions; accessible anywhere</li>
+    </ul>
+
+    <h3>Storage Class</h3>
+    <ul>
+        <li><strong>Automatic (auto):</strong> Default for local variables</li>
+        <li><strong>External (extern):</strong> Used to declare global variables</li>
+        <li><strong>Static:</strong> Retains variable value between function calls</li>
+        <li><strong>Register:</strong> Suggests variable be stored in CPU register</li>
+    </ul>
+
+    <h3>Function with Array Example</h3>
+    <pre><code>void printArray(int arr[], int size) {
+    for (int i = 0; i &lt; size; i++)
+        printf("%d ", arr[i]);
+}</code></pre>
+
+    <h3>Recursive Function</h3>
+    <p>A function that calls itself to solve smaller instances of a problem.</p>
+    <pre><code>int factorial(int n) {
+    if (n == 0)
+        return 1;
+    else
+        return n * factorial(n - 1);
+}</code></pre>
+
+    <h4>Advantages</h4>
+    <ul>
+        <li>Cleaner code for problems like factorial, Fibonacci, etc.</li>
+        <li>Useful for divide and conquer algorithms</li>
+    </ul>
+
+    <h4>Disadvantages</h4>
+    <ul>
+        <li>Consumes more stack memory</li>
+        <li>Risk of stack overflow if recursion depth is large</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Structure and Union</h2>
+
+    <h3>Structure</h3>
+    <p>Structures allow grouping variables of different types into a single unit.</p>
+    <pre><code>struct Student {
+    int id;
+    char name[50];
+};</code></pre>
+
+    <h3>Accessing Members</h3>
+    <pre><code>struct Student s1;
+s1.id = 1001;
+strcpy(s1.name, "Alice");</code></pre>
+
+    <h3>Nested Structure</h3>
+    <pre><code>struct Date {
+    int day, month, year;
+};
+
+struct Student {
+    int id;
+    struct Date dob;
+};</code></pre>
+
+    <h3>Array of Structures</h3>
+    <pre><code>struct Student students[3];</code></pre>
+
+    <h3>Passing Structure to Function</h3>
+    <pre><code>void printStudent(struct Student s) {
+    printf("ID: %d, Name: %s\n", s.id, s.name);
+}</code></pre>
+
+    <h3>Union</h3>
+    <p>A union stores different data types in the same memory location, but only one member can hold a value at a time.</p>
+    <pre><code>union Data {
+    int i;
+    float f;
+    char str[20];
+};</code></pre>
+
+    <h3>Comparison Between Structure and Union</h3>
+    <ul>
+        <li>Structures allocate memory for all members; unions allocate memory equal to the largest member only.</li>
+        <li>All members of a structure can be used simultaneously; in a union only one member can hold data at a time.</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Pointers</h2>
+
+    <h3>Introduction</h3>
+    <p>Pointers store the memory address of other variables.</p>
+    <pre><code>int x = 10;
+int *ptr = &x;  // ptr holds address of x</code></pre>
+
+    <h3>Pointer Usage and Working</h3>
+    <p>Using pointers, we can access or modify the value stored in a memory location.</p>
+
+    <h3>Pointer and Functions (Call by Reference)</h3>
+    <pre><code>void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}</code></pre>
+
+    <h3>Comparison: Call by Value vs Call by Reference</h3>
+    <ul>
+        <li><strong>Call by Value:</strong> Passes copy of values; changes do not affect original variables.</li>
+        <li><strong>Call by Reference:</strong> Passes addresses; changes affect original variables.</li>
+    </ul>
+
+    <h3>Pointer with Arrays</h3>
+    <pre><code>int arr[] = {1, 2, 3};
+int *p = arr;  // points to arr[0]
+
+printf("%d", *(p + 1));  // outputs 2</code></pre>
+
+    <h3>Advantages</h3>
+    <ul>
+        <li>Efficient handling of arrays and dynamic memory</li>
+        <li>Enables call by reference to modify variables</li>
+    </ul>
+
+    <h3>Disadvantages</h3>
+    <ul>
+        <li>Improper use can cause segmentation faults</li>
+        <li>Complexity increases, harder to debug</li>
+    </ul>
+</section>
+
+<section>
+    <h2>File Handling</h2>
+
+    <h3>Concept and Need</h3>
+    <p>File handling in C allows programs to store data permanently, enabling persistent storage beyond program execution.</p>
+
+    <h3>Types of Files</h3>
+    <ul>
+        <li><strong>Sequential Files:</strong> Data is accessed in sequence from start to end.</li>
+        <li><strong>Random Access Files:</strong> Data can be accessed at any location.</li>
+    </ul>
+
+    <h3>File Handling Functions</h3>
+    <ul>
+        <li><code>fopen()</code> – Open a file <br> <strong>Syntax:</strong> <code>FILE *fptr = fopen("filename", "mode");</code></li>
+        <li><code>fclose()</code> – Close a file <br> <strong>Syntax:</strong> <code>fclose(fptr);</code></li>
+        <li><code>getc()</code>, <code>putc()</code> – Read/write single character <br> <strong>Syntax:</strong> <code>ch = getc(fptr);</code>, <code>putc(ch, fptr);</code></li>
+        <li><code>fprintf()</code>, <code>fscanf()</code> – Formatted read/write <br> <strong>Syntax:</strong> <code>fprintf(fptr, "format", variables);</code>, <code>fscanf(fptr, "format", &variables);</code></li>
+        <li><code>getw()</code>, <code>putw()</code> – Read/write integer <br> <strong>Syntax:</strong> <code>int i = getw(fptr);</code>, <code>putw(i, fptr);</code></li>
+        <li><code>fgets()</code>, <code>fputs()</code> – Read/write strings <br> <strong>Syntax:</strong> <code>fgets(str, size, fptr);</code>, <code>fputs(str, fptr);</code></li>
+        <li><code>fread()</code>, <code>fwrite()</code> – Block input/output <br> <strong>Syntax:</strong> <code>fread(buffer, size, count, fptr);</code>, <code>fwrite(buffer, size, count, fptr);</code></li>
+        <li><code>remove()</code>, <code>rename()</code> – File delete and rename <br> <strong>Syntax:</strong> <code>remove("filename");</code>, <code>rename("oldname","newname");</code></li>
+    </ul>
+
+    <h3>Random Access Functions</h3>
+    <ul>
+        <li><code>fseek()</code>: Moves file pointer to a specific location.<br>
+            <strong>Syntax:</strong> <code>fseek(fptr, offset, origin);</code></li>
+        <li><code>rewind()</code>: Resets file pointer to beginning.<br>
+            <strong>Syntax:</strong> <code>rewind(fptr);</code></li>
+        <li><code>ftell()</code>: Returns current position of file pointer.<br>
+            <strong>Syntax:</strong> <code>long pos = ftell(fptr);</code></li>
+    </ul>
+
+    <h3>File Opening Modes</h3>
+    <ul>
+        <li><code>"r"</code> – Read (file must exist)</li>
+        <li><code>"r+"</code> – Read and write (file must exist)</li>
+        <li><code>"w"</code> – Write (creates new or truncates existing file)</li>
+        <li><code>"w+"</code> – Read and write (creates new or truncates existing file)</li>
+        <li><code>"a"</code> – Append (write at end, creates file if not exists)</li>
+        <li><code>"a+"</code> – Read and append</li>
+    </ul>
+
+    <h3>Steps to Work with Files in C</h3>
+    <ol>
+        <li>Declare a file pointer: <code>FILE *fptr;</code></li>
+        <li>Open file with mode: <code>fptr = fopen("filename", "mode");</code></li>
+        <li>Perform reading/writing operations</li>
+        <li>Close the file: <code>fclose(fptr);</code></li>
+    </ol>
+
+    <h3>Reading Data from Files</h3>
+    <pre><code>FILE *fptr = fopen("data.txt", "r");
+char ch;
+if (fptr != NULL) {
+    while ((ch = getc(fptr)) != EOF) {
+        putchar(ch);
+    }
+    fclose(fptr);
+}</code></pre>
+
+    <h3>Writing Data to Files</h3>
+    <pre><code>FILE *fptr = fopen("data.txt", "w");
+if (fptr != NULL) {
+    fputs("Hello, File!", fptr);
+    fclose(fptr);
+}</code></pre>
+
+    <h3>Appending Data to Files</h3>
+    <pre><code>FILE *fptr = fopen("data.txt", "a");
+if (fptr != NULL) {
+    fputs("\nAppending this line.", fptr);
+    fclose(fptr);
+}</code></pre>
+
+    <h3>End of File (EOF)</h3>
+    <p>The EOF is a marker to indicate no more data can be read. In C, EOF is usually defined as -1.</p>
+</section>
+
+<section>
+    <h2>Typedef Keyword</h2>
+    <p><code>typedef</code> is used to create a new name (alias) for an existing data type, improving code readability.</p>
+    <pre><code>typedef unsigned int UINT;
+UINT a, b;</code></pre>
+</section>
+    </div>
+</body>
+</html>
