@@ -11,47 +11,91 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f0fdfc;
   color: #2c3e50;
+  line-height: 1.6;
 }
 
-/* Layout container */
+/* === For new layout with .container === */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* === For third file layout (#main) === */
 #main {
   display: flex;
   min-height: 100vh;
 }
 
-/* Sidebar (Table of Contents) */
-#TOC {
-  width: 25%;
+/* Sidebar base styles for all sidebars */
+.sidebar,
+#TOC,
+.sidebar {
   background: linear-gradient(to bottom, #d7f9f3, #b2f0e8);
   padding: 25px;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+  border-right: 3px solid #00bfa5;
+  overflow-y: auto;
   position: sticky;
   top: 0;
   height: 100vh;
+}
+
+/* Width for .sidebar in new layout */
+.container .sidebar {
+  width: 25%;
+}
+
+/* Width for #TOC in third file */
+#main #TOC {
+  width: 25%;
+}
+
+/* Sidebar width and position fallback for old layout */
+body:not(.container):not(#main) .sidebar {
+  width: 240px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
   overflow-y: auto;
-  border-right: 3px solid #00bfa5;
 }
 
-/* Sidebar heading */
-#TOC h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #00695c;
-  font-size: 24px;
+/* Content base styles */
+.content,
+#details {
+  background-color: #ffffff;
+  padding: 40px;
+  overflow-y: auto;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Sidebar list */
-#tocul {
+/* Width for content in new layout */
+.container .content {
+  width: 75%;
+}
+
+/* Width for content in third file */
+#main #details {
+  width: 75%;
+}
+
+/* Content margin-left fallback for old layout */
+body:not(.container):not(#main) .content {
+  margin-left: 260px;
+}
+
+/* Sidebar list styles for old file */
+.sidebar ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-#tocul > li {
+.sidebar ul li {
   margin-bottom: 18px;
 }
 
-#tocul > li > a {
+.sidebar ul li a {
   display: block;
   background-color: #a5f2e0;
   padding: 12px 18px;
@@ -63,22 +107,62 @@ body {
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-#tocul > li > a:hover,
-#tocul > li > a:focus {
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
   background-color: #00ccb5;
   color: white;
   transform: translateX(5px);
   outline: none;
 }
 
-/* Sub-list in sidebar */
-#tocul li ul {
+/* Sidebar list styles for new file (#tocul inside .sidebar) */
+.sidebar #tocul,
+#TOC #tocul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar #tocul > li,
+#TOC #tocul > li {
+  margin-bottom: 18px;
+}
+
+.sidebar #tocul > li > a,
+#TOC #tocul > li > a {
+  display: block;
+  background-color: #a5f2e0;
+  padding: 12px 18px;
+  border-radius: 18px;
+  text-decoration: none;
+  color: #004d40;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar #tocul > li > a:hover,
+.sidebar #tocul > li > a:focus,
+#TOC #tocul > li > a:hover,
+#TOC #tocul > li > a:focus {
+  background-color: #00ccb5;
+  color: white;
+  transform: translateX(5px);
+  outline: none;
+}
+
+/* Nested ul in sidebar (for both structures) */
+.sidebar ul li ul,
+.sidebar #tocul li ul,
+#TOC #tocul li ul {
   margin-top: 10px;
   padding-left: 20px;
   list-style: none;
 }
 
-#tocul li ul li a {
+.sidebar ul li ul li a,
+.sidebar #tocul li ul li a,
+#TOC #tocul li ul li a {
   display: block;
   background-color: #d1faff;
   padding: 8px 14px;
@@ -89,30 +173,27 @@ body {
   transition: all 0.2s ease;
 }
 
-#tocul li ul li a:hover,
-#tocul li ul li a:focus {
+.sidebar ul li ul li a:hover,
+.sidebar ul li ul li a:focus,
+.sidebar #tocul li ul li a:hover,
+.sidebar #tocul li ul li a:focus,
+#TOC #tocul li ul li a:hover,
+#TOC #tocul li ul li a:focus {
   background-color: #4dd0e1;
   color: white;
   transform: translateX(5px);
   outline: none;
 }
 
-/* Content area */
-#details {
-  width: 75%;
-  padding: 40px;
-  background-color: #ffffff;
-  overflow-y: auto;
-  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
-}
-
 /* Headings */
+.content h1,
 #details h1 {
   font-size: 2rem;
   color: #1e3d59;
   margin-bottom: 20px;
 }
 
+.content h2,
 #details h2 {
   font-size: 1.6rem;
   color: #157c74;
@@ -120,6 +201,7 @@ body {
   margin-bottom: 15px;
 }
 
+.content h3,
 #details h3 {
   font-size: 1.3rem;
   color: #288d8d;
@@ -127,27 +209,58 @@ body {
   margin-bottom: 12px;
 }
 
+.content h4,
+#details h4 {
+  font-size: 1.1rem;
+  color: #3aa8a1;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
 /* Paragraphs */
+.content p,
 #details p {
   font-size: 1rem;
-  line-height: 1.6;
   margin-bottom: 15px;
   color: #2c3e50;
 }
 
 /* Lists */
+.content ul,
+.content ol,
 #details ul,
 #details ol {
   margin-left: 20px;
   margin-bottom: 20px;
 }
 
+.content ul li,
+.content ol li,
 #details ul li,
 #details ol li {
   margin-bottom: 10px;
 }
 
+/* Preformatted code blocks */
+.content pre,
+#details pre {
+  background-color: #eaf6f5;
+  padding: 15px 20px;
+  border-left: 5px solid #00bfa5;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.content code,
+#details code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  color: #004d40;
+}
+
 /* Tables */
+.content table,
 #details table {
   border-collapse: collapse;
   width: 100%;
@@ -155,6 +268,8 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
+.content th,
+.content td,
 #details th,
 #details td {
   border: 1px solid #ccc;
@@ -163,94 +278,56 @@ body {
   color: #004d40;
 }
 
+.content th,
 #details th {
   background-color: #a5f2e0;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .container,
   #main {
     flex-direction: column;
   }
 
-  #TOC,
-  #details {
-    width: 100%;
-    height: auto;
-  }
-
+  .sidebar,
   #TOC {
-    position: relative;
-    border-right: none;
-    box-shadow: none;
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    border-right: none !important;
+    box-shadow: none !important;
+    padding: 15px !important;
   }
 
+  .content,
   #details {
-    padding: 20px;
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding: 20px !important;
   }
 
+  .content h1,
   #details h1 {
     font-size: 1.6rem;
   }
 
+  .content h2,
   #details h2 {
     font-size: 1.3rem;
   }
 
+  .content h3,
   #details h3 {
     font-size: 1.1rem;
   }
+
+  .content h4,
+  #details h4 {
+    font-size: 1rem;
+  }
 }
 
-/* Optional: Smooth scrolling */
 html {
   scroll-behavior: smooth;
-}
-
-
-
-
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-.container {
-    display: flex;
-    min-height: 100vh;
-}
-
-.sidebar {
-    width: 250px;
-    background-color: #f0f0f0;
-    padding: 20px;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    margin-bottom: 10px;
-}
-
-.sidebar ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    display: block;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #ddd;
-}
-
-.sidebar ul li a:hover {
-    background-color: #bbb;
-}
-
-.content {
-    flex: 1;
-    padding: 30px;
 }
