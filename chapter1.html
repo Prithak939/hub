@@ -252,6 +252,54 @@
                 <li><strong>BOOLEAN, ENUM, TEXT</strong> - Others</li>
             </ul>
         </section>
+        <section>
+  <h3>Data Constraints</h3>
+  <p>Data constraints are rules applied to database columns to ensure data integrity and validity. They prevent incorrect or inconsistent data from being stored.</p>
+  <ul>
+    <li><strong>NOT NULL:</strong> Ensures that a column cannot have a null value. Example: A student's roll number must always be provided.</li>
+    <li><strong>UNIQUE:</strong> Guarantees that all values in a column are different. Example: Email addresses in a user table.</li>
+    <li><strong>PRIMARY KEY:</strong> Combines NOT NULL and UNIQUE to uniquely identify each record. Example: Employee ID.</li>
+    <li><strong>AUTO INCREMENT:</strong> Automatically generates a unique number for new records. Commonly used with primary keys.</li>
+  </ul>
+
+  <h3>SQL Operators</h3>
+  <p>Operators are used in SQL queries to filter and manipulate data based on conditions.</p>
+  <ul>
+    <li><strong>AND:</strong> Returns results where all conditions are true. Example: `WHERE age > 18 AND city = 'Kathmandu'`</li>
+    <li><strong>OR:</strong> Returns results where at least one condition is true. Example: `WHERE city = 'Kathmandu' OR city = 'Pokhara'`</li>
+    <li><strong>NOT:</strong> Excludes results that match a condition. Example: `WHERE NOT city = 'Biratnagar'`</li>
+  </ul>
+
+  <h3>WHERE Clause</h3>
+  <p>The <strong>WHERE</strong> clause is used to filter records based on specific conditions. It is commonly used with SELECT, UPDATE, and DELETE statements.</p>
+  <p><em>Example:</em> `SELECT * FROM Students WHERE grade = 'A';`</p>
+
+  <h3>ORDER BY Clause</h3>
+  <p>The <strong>ORDER BY</strong> clause is used to sort the result set in ascending or descending order based on one or more columns.</p>
+  <p><em>Example:</em> `SELECT * FROM Products ORDER BY price DESC;`</p>
+
+  <h3>SQL JOINs</h3>
+  <p>JOINs are used to combine rows from two or more tables based on a related column between them.</p>
+  <ul>
+    <li><strong>INNER JOIN:</strong> Returns records with matching values in both tables.</li>
+    <li><strong>LEFT JOIN:</strong> Returns all records from the left table and matched records from the right table.</li>
+    <li><strong>RIGHT JOIN:</strong> Returns all records from the right table and matched records from the left table.</li>
+    <li><strong>FULL JOIN:</strong> Returns all records when there is a match in either table.</li>
+  </ul>
+  <p><em>Example:</em> `SELECT Orders.order_id, Customers.name FROM Orders INNER JOIN Customers ON Orders.customer_id = Customers.id;`</p>
+
+  <h3>ER Diagrams</h3>
+  <p>Entity-Relationship (ER) diagrams are visual representations of entities and their relationships in a database. They help in designing and understanding the structure of a database.</p>
+  <ul>
+    <li><strong>Entity:</strong> A real-world object or concept, such as Student or Course.</li>
+    <li><strong>Attribute:</strong> A property or characteristic of an entity, such as Name or Age.</li>
+    <li><strong>Relationship:</strong> A connection between entities, such as "Enrolled In" between Student and Course.</li>
+    <li><strong>Cardinality:</strong> Describes the number of instances of one entity related to another (e.g., one-to-many).</li>
+    <li><strong>Degree:</strong> The number of entities involved in a relationship (e.g., binary, ternary).</li>
+    <li><strong>Symbols:</strong> Rectangles for entities, ovals for attributes, diamonds for relationships, and lines to connect them.</li>
+  </ul>
+  <p><em>Example:</em> A Student entity connected to a Course entity through an "Enrolls" relationship, showing that students can enroll in multiple courses.</p>
+</section>
     </div>
 </div>
 </body>
